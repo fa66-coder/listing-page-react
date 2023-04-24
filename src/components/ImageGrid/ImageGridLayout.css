@@ -1,0 +1,18 @@
+.image-grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 30px; /* This is inherited by the child grid */
+  }
+  
+  [class*="Poster"] {
+    width: 100%;
+  }
+
+  @media only screen and (min-width: 768px) {
+    [class*="Poster"] {
+      width: 588px;
+      max-width: 590px;
+      height: 300px;
+      object-fit: cover;
+    }
+  }
