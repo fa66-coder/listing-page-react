@@ -1,18 +1,56 @@
 .image-grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
-    gap: 30px; /* This is inherited by the child grid */
+    /* gap: 30px; This is inherited by the child grid */
+    width: 100%;
+    column-gap: 10px;
+    row-gap: 30px;
   }
   
   [class*="Poster"] {
     width: 100%;
+    object-fit: cover;
+    height: 100%;
   }
+  /* @media only screen and (max-width: 1819px) {
+    [class*="Poster"] {
+      width: 100%;
+      max-width: 590px;
+      height: 360px;
+  }
+    .image-grid-container {
+      max-width: 1826px;
+      width: 100%;
+    }
+  } */
 
   @media only screen and (min-width: 768px) {
     [class*="Poster"] {
-      width: 588px;
+      width: 100%;
       max-width: 590px;
-      height: 300px;
-      object-fit: cover;
+      height: 360px;
+  }
+    .image-grid-container {
+      max-width: 1826px;
+      width: 100%;
     }
   }
+/* 
+  @media only screen and (min-width: 768px) {
+    [class*="Poster"] {
+      width: 265px;
+      max-width: 590px;
+      height: 300px;
+    }
+    .image-grid-container {
+      max-width: 1826px;
+      width: 100%;
+    }
+  } */
+
+
+
+  /* class="image-grid-container" */
+  /* add media queries:
+max-width: 1826px;
+width: 100%; */

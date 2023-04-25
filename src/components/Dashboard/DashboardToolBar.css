@@ -22,3 +22,16 @@ height: 30px;
 h3{
     color:#BCBEC0
 }
+
+@media (min-width: 768px) {
+    .toolbar-container{
+        max-width: 1826px;
+        width: 100%;
+      }
+  }
+
+/* @media (min-width: 600px) {
+    .toolbar-container{
+      max-width: 1826px;
+    }
+  } */
