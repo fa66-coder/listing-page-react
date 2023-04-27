@@ -8,8 +8,22 @@
 }
 
 .searchIcon {
-    margin-left: auto;
     margin-right: 10px;
+    margin-top: 5px;
+}
+
+.apply-margin {
+    margin-left: auto;
+}
+
+.searchInput {
+    color: white;
+    background-color: black;
+    margin-left: auto;
+    margin-right: 20px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 400px;
 }
 .navImages{
 /* flex-basis: 200px;
