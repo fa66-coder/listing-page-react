@@ -6,11 +6,19 @@ import { useState } from 'react'
 import './DashboardToolBar.css'
 
 export default function DashboarToolBar() {
+    let [showSearch, setShowSearch] = useState(true)
+    let [showBackButton, setShowBackButton] = useState(true)
+
+    function onBackButtonClick() {
+        setShowSearch(false)
+        setShowBackButton(false)
+    }
+
     return (
         <div className='toolbar-container' style={{ backgroundImage:`url('src/images/nav_bar.png')` }}>
-            <img src='src/images/Back.png' className='navImages backIcon' alt='back icon' />
+            {showBackButton && <img src='src/images/Back.png' className='navImages backIcon' alt='back icon' onClick={onBackButtonClick}/>}
             <h3> Romantic Comedy </h3>
-            <img src='src/images/search.png' className='navImages searchIcon' alt='search image'/>
+            {showSearch && <img src='src/images/search.png' className='navImages searchIcon' alt='search image'/>}
         </div>
     )
 }
