@@ -42,3 +42,7 @@
 } */
 
 /* #root {display: flex;} */
+
+.app-container {
+  margin-left: 5px;
+}
