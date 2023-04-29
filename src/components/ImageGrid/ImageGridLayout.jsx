@@ -1,10 +1,22 @@
 import './ImageGridLayout.css'
 import ImageGridItem from './ImageGridItem'
-import listingPage1 from '../../api/listing-page1.json'
+import { useSelector , useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { loadImages } from '../../features/Images/imagesSlice'
 
-const formatLisitngPage = listingPage1
-const imagePosters = formatLisitngPage.page['content-items'].content
 export default function ImageGridLayout() {
+    const imagePosters = useSelector(state=>state.images.images)
+    const dispatch = useDispatch()
+
+    const imagesLoadStatus = useSelector(state=>state.images.status)
+    const loadError = useSelector(state => state.images.error)
+    useEffect(()=>{
+        console.log("Entere use effect",imagePosters)
+        if(imagesLoadStatus === 'idle') {
+             dispatch(loadImages())
+        }
+    }, [imagesLoadStatus])
+
     return (
         <div className="image-grid-container">
             {imagePosters.map((poster)=>{
