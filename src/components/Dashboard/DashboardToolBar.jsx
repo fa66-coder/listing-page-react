@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 //NOTE : can directly use src/images/pg.jpg instead of importing
 // import searchIcon from "../../images/search.png"
 // import BackIcon from "../../images/Back.png"
 // import navBarImg from "../../images/nav_bar.png"
 import './DashboardToolBar.css'
 
-export default function DashboarToolBar() {
+export default function DashboarToolBar({onInputUpdate}) {
     let [showSearch, setShowSearch] = useState(true)
     let [showBackButton, setShowBackButton] = useState(true)
     let [showSearchInput, setShowSearchInput] = useState(false)
+    let [searchFilter, setSearchFilter] = useState('')
+
+    useEffect(()=>{
+        onInputUpdate(searchFilter)
+    },[searchFilter]);
 
     function onBackButtonClick() {
         setShowSearch(false)
@@ -20,8 +25,8 @@ export default function DashboarToolBar() {
         setShowSearchInput(!showSearchInput)
     }
 
-    function onFilterText() {
-
+    function onFilterText(event) {
+        setSearchFilter(event.target.value)
     }
 
     return (

@@ -35,7 +35,7 @@ const imagesSlice = createSlice({
 
                 }
             }
-        }
+        },
     },
     extraReducers(builder) {
         builder.addCase(loadImages.pending,(state,action) =>{
@@ -55,3 +55,10 @@ const imagesSlice = createSlice({
 
 export const { addImages } = imagesSlice.actions
 export default imagesSlice.reducer
+
+export const filteredImages = (state,filteredText) => {
+    if(filteredText) {
+        return state.images.images.filter(image=>image.name.toLowerCase().includes(filteredText.toLowerCase()))
+    } 
+    return state.images.images
+}
