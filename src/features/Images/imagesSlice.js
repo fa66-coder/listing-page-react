@@ -6,10 +6,10 @@ const initialState = {
     status: 'idle',
     error: null
 }
-export const loadImages = createAsyncThunk('images/loadImages', async () => {
+export const loadImages = createAsyncThunk('images/loadImages', async (pageNumber) => {
     console.log("enterer here ")
     try {
-        const response = await client.get('./src/api/listing-page1.json')
+        const response = await client.get(`./src/api/listing-page${pageNumber}.json`)
         return response.data
     }
     catch (err) {
