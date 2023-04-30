@@ -2,11 +2,8 @@
   "name": "listing-page-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://fa66-coder.github.io/listing-page-react",
   "type": "module",
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview"
