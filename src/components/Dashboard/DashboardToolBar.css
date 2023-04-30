@@ -1,0 +1,56 @@
+.toolbar-container {
+    display: flex;
+    align-items: center;
+}
+
+.backIcon {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.searchIcon {
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+.apply-margin {
+    margin-left: auto;
+}
+
+.searchInput {
+    color: white;
+    background-color: black;
+    margin-right: 2px;
+    flex-grow: 0;
+    flex-shrink: 1;
+    /* flex-basis: 400px; */
+}
+
+.navImages {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+h3 {
+    color: #BCBEC0
+}
+
+@media (min-width: 768px) {
+    .toolbar-container {
+        max-width: 1826px;
+        width: 100%;
+
+    }
+
+    .searchInput {
+        flex-basis: 400px;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .navImages {
+        width: 30px;
+        height: 30px;
+    }
+}

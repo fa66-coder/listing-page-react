@@ -1,0 +1,38 @@
+.image-grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  /* gap: 30px; This is inherited by the child grid */
+  width: 100%;
+  column-gap: 10px;
+  row-gap: 30px;
+}
+
+[class*="poster"] {
+  width: 100%;
+  object-fit: cover;
+  object-position: top;
+  height: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  [class*="poster"] {
+    width: 100%;
+    max-width: 590px;
+    height: 360px;
+  }
+
+  .image-grid-container {
+    max-width: 1826px;
+    width: 100%;
+  }
+
+  .grid-item {
+    height: 385px;
+
+  }
+}
+
+.grid-item {
+  display: flex;
+  flex-direction: column;
+}
