@@ -21,21 +21,9 @@ const imagesSlice = createSlice({
     name: 'images',
     initialState: initialState,
     reducers: {
-        addImages: {
-            reducer(state, action) {
-                state.push(action.payload)
-            },
-            prepare(name, posterImage) {
-                return {
-                    payload: {
-                        id: nanoid(),
-                        name,
-                        posterImage
-                    }
-
-                }
-            }
-        },
+        setImageLoadStatus: (state,action) =>{
+            state.status = action.payload
+        }
     },
     extraReducers(builder) {
         builder.addCase(loadImages.pending,(state,action) =>{
@@ -53,7 +41,7 @@ const imagesSlice = createSlice({
     }
 })
 
-export const { addImages } = imagesSlice.actions
+export const { setImageLoadStatus } = imagesSlice.actions
 export default imagesSlice.reducer
 
 export const filteredImages = (state,filteredText) => {
