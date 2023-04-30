@@ -9,7 +9,7 @@ const initialState = {
 export const loadImages = createAsyncThunk('images/loadImages', async (pageNumber) => {
     console.log("enterer here ")
     try {
-        const response = await client.get(`./src/api/listing-page${pageNumber}.json`)
+        const response = await client.get(`./api/listing-page${pageNumber}.json`)
         return response.data
     }
     catch (err) {
