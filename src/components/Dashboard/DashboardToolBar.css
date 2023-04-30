@@ -26,9 +26,6 @@
     flex-basis: 400px;
 }
 .navImages{
-/* flex-basis: 200px;
-flex-shrink: 1;
-flex-grow: 1 */
 width: 30px;
 height: 30px;
 cursor: pointer;
@@ -44,9 +41,3 @@ h3{
         width: 100%;
       }
   }
-
-/* @media (min-width: 600px) {
-    .toolbar-container{
-      max-width: 1826px;
-    }
-  } */
