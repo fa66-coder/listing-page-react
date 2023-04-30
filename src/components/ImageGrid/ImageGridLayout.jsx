@@ -14,16 +14,10 @@ export default function ImageGridLayout({ searchFilter }) {
 
     const imagesLoadStatus = useSelector(state => state.images.status)
     const loadError = useSelector(state => state.images.error)
-
     useEffect(() => {
-        if (!disableTwiceMount.current) {
-            console.log("mount")
+        if (imagesLoadStatus === 'idle') {
             setHasNextPage(pageNumber < totalPages)
             dispatch(loadImages(pageNumber))
-        }
-        return () => {
-            disableTwiceMount.current = true;
-            console.log("Unmount")
         }
     }, [pageNumber])
 
@@ -35,6 +29,7 @@ export default function ImageGridLayout({ searchFilter }) {
             if (posters[0].isIntersecting && hasNextPage) {
                 console.log("we are near to last post")
                 dispatch(setImageLoadStatus('idle'))
+                disableTwiceMount.current = false;
                 setPageNumber(prev => prev + 1)
 
             }
@@ -46,9 +41,9 @@ export default function ImageGridLayout({ searchFilter }) {
         <div className="image-grid-container">
             {imagesFiltered.map((poster, index) => {
                 if (imagesFiltered.length === index + 1) {
-                    return <ImageGridItem ref={lastPosterRef} posterImage={poster['poster-image']} posterName={poster.name} />
+                    return <ImageGridItem key={poster.id} ref={lastPosterRef} posterImage={poster['poster-image']} posterName={poster.name} />
                 }
-                return <ImageGridItem posterImage={poster['poster-image']} posterName={poster.name} />
+                return <ImageGridItem key={poster.id} posterImage={poster['poster-image']} posterName={poster.name} />
             })}
 
         </div>

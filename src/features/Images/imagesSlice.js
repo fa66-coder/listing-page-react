@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, nanoid } from '@reduxjs/toolkit'
 import { client } from '../../api/client'
 
 const initialState = {
@@ -32,7 +32,8 @@ const imagesSlice = createSlice({
         builder.addCase(loadImages.fulfilled, (state, action) => {
             state.status = 'succeeded'
             const result = action.payload.page['content-items'].content
-            state.images.push(...result)
+            let formattedResult = result.map((item) => { return { ...item, id: nanoid() } })
+            state.images.push(...formattedResult)
         })
         builder.addCase(loadImages.rejected, (state, action) => {
             state.status = 'failed';

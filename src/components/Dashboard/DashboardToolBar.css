@@ -1,7 +1,8 @@
-.toolbar-container{
+.toolbar-container {
     display: flex;
     align-items: center;
 }
+
 .backIcon {
     margin-left: 10px;
     margin-right: 10px;
@@ -19,25 +20,37 @@
 .searchInput {
     color: white;
     background-color: black;
-    margin-left: auto;
-    margin-right: 20px;
+    margin-right: 2px;
     flex-grow: 0;
     flex-shrink: 1;
-    flex-basis: 400px;
-}
-.navImages{
-width: 30px;
-height: 30px;
-cursor: pointer;
+    /* flex-basis: 400px; */
 }
 
-h3{
-    color:#BCBEC0
+.navImages {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+h3 {
+    color: #BCBEC0
 }
 
 @media (min-width: 768px) {
-    .toolbar-container{
+    .toolbar-container {
         max-width: 1826px;
         width: 100%;
-      }
-  }
+
+    }
+
+    .searchInput {
+        flex-basis: 400px;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .navImages {
+        width: 30px;
+        height: 30px;
+    }
+}

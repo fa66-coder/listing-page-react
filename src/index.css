@@ -1,12 +1,19 @@
 * {
   box-sizing: border-box;
 }
+
 body {
   margin: 0;
 }
+
 :root {
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-  font:bold 22px Titillium Web;
+  font: 16px Titillium Web;
 }
 
+@media only screen and (min-width: 768px) {
+  :root {
+    font: 22px Titillium Web;
+  }
+}

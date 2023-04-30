@@ -9,7 +9,7 @@ const ImageGridItem = forwardRef(({ posterImage, posterName }, ref) => {
     return (
         <div className='grid-item' ref={ref} >
             <img src={`src/images/${posterImage}`} className={`grid-images ${posterClass}`} onError={handleMissingImages} alt={posterClass} loading="lazy" />
-            <div> {posterName} </div>
+            <div className="posterName"> {posterName} </div>
         </div>
     )
 });
