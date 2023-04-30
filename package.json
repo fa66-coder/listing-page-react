@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://fa66-coder.github.io/listing-page-react",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -19,7 +18,6 @@
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react": "^3.1.0",
-    "gh-pages": "^5.0.0",
     "vite": "^4.1.0"
   }
 }
