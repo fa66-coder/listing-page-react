@@ -26,7 +26,7 @@ export default function DashboarToolBar({ onInputUpdate }) {
     }
 
     return (
-        <div className='toolbar-container' style={{ backgroundImage: `url('src/images/nav_bar.png')` }}>
+        <div className='toolbar-container' style={{ backgroundImage: `url('./nav_bar.png')` }}>
             {showBackButton && <img src='./Back.png' className='navImages backIcon' alt='back icon' onClick={onBackButtonClick} />}
             <h3> Romantic Comedy </h3>
             {showSearchInput && <input type='text' class="searchInput" onChange={onFilterText} />}
