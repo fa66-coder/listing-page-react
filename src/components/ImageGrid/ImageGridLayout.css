@@ -14,6 +14,10 @@
   height: 100%;
 }
 
+.posterthatismissing {
+  object-position: center;
+}
+
 @media only screen and (min-width: 768px) {
   [class*="poster"] {
     width: 100%;
