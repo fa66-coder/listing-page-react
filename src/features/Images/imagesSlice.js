@@ -6,7 +6,13 @@ const initialState = {
     status: 'idle',
     error: null
 }
-export const loadImages = createAsyncThunk('images/loadImages', async (pageNumber) => {
+
+/** 
+    loadImages() thunk will make api requests to fetch posters in pages 
+    * @param {Number} pageNumber fetch Json data based on page number.
+   * @returns {Json object} returns the api response JSON data
+**/
+export const loadImages = createAsyncThunk('images/loadImages', async (pageNumber, {dispatch, getState}) => {
     console.log("enterer here ")
     try {
         const response = await client.get(`./api/listing-page${pageNumber}.json`)
@@ -23,7 +29,7 @@ const imagesSlice = createSlice({
     reducers: {
         setImageLoadStatus: (state, action) => {
             state.status = action.payload
-        }
+        },
     },
     extraReducers(builder) {
         builder.addCase(loadImages.pending, (state, action) => {
