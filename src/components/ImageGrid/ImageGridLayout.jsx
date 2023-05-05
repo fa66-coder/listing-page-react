@@ -3,11 +3,10 @@ import ImageGridItem from './ImageGridItem'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import { loadImages, filteredImages, setImageLoadStatus } from '../../features/Images/imagesSlice'
-import Spinner from 'react-bootstrap/Spinner';
 
 export default function ImageGridLayout({ searchFilter }) {
     const totalPages = 3
-    const disableTwiceMount = useRef(false)
+    const shouldLoadImg = useRef(true)
     let [pageNumber, setPageNumber] = useState(1)
     let [hasNextPage, setHasNextPage] = useState(true)
     let [isLoading, setIsLoading] = useState(false)
@@ -17,7 +16,11 @@ export default function ImageGridLayout({ searchFilter }) {
     const imagesLoadStatus = useSelector(state => state.images.status)
     const loadError = useSelector(state => state.images.error)
     useEffect(() => {
-        if (imagesLoadStatus === 'idle' && !isLoading) {
+        //shouldLoadImg flag is to avoid useEffect running twice
+        if(pageNumber>1) {
+            shouldLoadImg.current = true
+        }
+        if (shouldLoadImg.current && imagesLoadStatus === 'idle' && !isLoading) {
             setHasNextPage(pageNumber < totalPages)
             setIsLoading(true)
             dispatch(loadImages(pageNumber))
@@ -28,6 +31,9 @@ export default function ImageGridLayout({ searchFilter }) {
                     setIsLoading(false)
                 })
         }
+
+        //Unmount
+        return () => shouldLoadImg.current = false
     }, [pageNumber])
 
     let intObserver = useRef()
@@ -39,9 +45,7 @@ export default function ImageGridLayout({ searchFilter }) {
             if (posters[0].isIntersecting && hasNextPage) {
                 console.log("we are near to last post")
                 dispatch(setImageLoadStatus('idle'))
-                disableTwiceMount.current = false;
                 setPageNumber(prev => prev + 1)
-
             }
         })
         if (post) intObserver.current.observe(post)

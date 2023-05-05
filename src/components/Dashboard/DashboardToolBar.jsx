@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import './DashboardToolBar.css'
 
 export default function DashboarToolBar({ onInputUpdate }) {
-    let [showSearch, setShowSearch] = useState(true)
-    let [showBackButton, setShowBackButton] = useState(true)
     let [showSearchInput, setShowSearchInput] = useState(false)
+    let [showTitle, setShowTitle] = useState(true)
     let [searchFilter, setSearchFilter] = useState('')
 
     useEffect(() => {
@@ -12,13 +11,13 @@ export default function DashboarToolBar({ onInputUpdate }) {
     }, [searchFilter]);
 
     function onBackButtonClick() {
-        setShowSearch(false)
-        setShowBackButton(false)
         setShowSearchInput(false)
+        setShowTitle(true)
     }
 
     function onSearchClick() {
-        setShowSearchInput(!showSearchInput)
+        setShowSearchInput(true)
+        setShowTitle(false)
     }
 
     function onFilterText(event) {
@@ -27,10 +26,12 @@ export default function DashboarToolBar({ onInputUpdate }) {
 
     return (
         <div className='toolbar-container' style={{ backgroundImage: `url('./nav_bar.png')` }}>
-            {showBackButton && <img src='./Back.png' className='navImages backIcon' alt='back icon' onClick={onBackButtonClick} />}
-            <h3> Romantic Comedy </h3>
-            {showSearchInput && <input type='text' class="searchInput" onChange={onFilterText} />}
-            {showSearch && <img src='./search.png' className={`navImages searchIcon ${!showSearchInput ? 'apply-margin' : ''}`} alt='search image' onClick={onSearchClick} />}
+            <img src='./Back.png' className='navImages backIcon' alt='back icon' onClick={onBackButtonClick} />
+           { showTitle &&  <h3 className="title"> Romantic Comedy </h3> }
+           <div className="searchOption">
+           {showSearchInput && <input type='text' className="searchInput" placeholder="Search using poster name" onChange={onFilterText} />}
+            <img src='./search.png' className={`navImages searchIcon ${!showSearchInput ? 'apply-margin' : ''}`} alt='search image' onClick={onSearchClick} />
+            </div> 
         </div>
     )
 }
