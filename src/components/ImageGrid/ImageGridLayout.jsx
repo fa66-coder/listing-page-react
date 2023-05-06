@@ -17,7 +17,7 @@ export default function ImageGridLayout({ searchFilter }) {
     const loadError = useSelector(state => state.images.error)
     useEffect(() => {
         //shouldLoadImg flag is to avoid useEffect running twice
-        if(pageNumber>1) {
+        if (pageNumber > 1) {
             shouldLoadImg.current = true
         }
         if (shouldLoadImg.current && imagesLoadStatus === 'idle' && !isLoading) {
