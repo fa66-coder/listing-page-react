@@ -51,6 +51,7 @@ export default function ImageGridLayout({ searchFilter }) {
         if (post) intObserver.current.observe(post)
     }, [hasNextPage])
 
+
     if (loadError) return <div className='center'>Something went wrong in fetching comedy posters, Please try after sometime</div>
 
     return (
