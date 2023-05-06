@@ -11,7 +11,8 @@ const ImageGridItem = forwardRef(({ posterImage, posterName }, ref) => {
     return (
         <div className='grid-item' ref={ref} >
             {!imagesLoadedStatus && <LoadingSpinner />}
-            <img src={`./${posterImage}`} className={`grid-images ${posterClass}`}
+            {/* Till the image load keep the spinner and hide the incomplete load image */}
+            <img style={imagesLoadedStatus ? {} : { display: 'none' }} src={`./${posterImage}`} className={`grid-images ${posterClass}`}
                 onLoad={() => setImageLoadedStatus(true)}
                 onError={handleMissingImages} alt={posterClass} />
             <div className="titlePoster"> {posterName} </div>
